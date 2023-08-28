@@ -24,16 +24,41 @@
     <div id = "animal-table"></div>
 
     <script>
+      //<table> is declared as tableHTML
       let tableHTML = '<table>';
-      tableHTML += '<tr><th>Animal ID</th><th>Animal Name</th><th>Owner Name</th><th>Weight</th><th>Age</th></tr>':
 
+      //tableHTML  calls for each header in the table: animal ID, Animal Name, Owner Name, Weight, and Age
+      tableHTML += '<tr><th>Animal ID</th><th>Animal Name</th><th>Owner Name</th><th>Weight</th><th>Age</th><th>Age Bracket</th></tr>';
+
+      //dummy data of animals that will be used in the table
       const animals = [
-        { id: 1, name: "Fluffy", owner: "Alice", weight: 12, age: 3 },
-          { id: 2, name: "Max", owner: "Bob", weight: 20, age: 5 }
+        { id: 1, name: "Fluffy", owner: "Alice", weight: 12, age: 0.2 },
+        { id: 2, name: "Max", owner: "Bob", weight: 20, age: 5 },
+        { id: 3, name: "Conan", owner: "Marla", weight: 25, age: 10.1 },
+        { id: 4, name: "Chuchu", owner: "Marla", weight: 30, age: 19 }
       ];
 
+      //function that will determine the description of each animal depending on their age
+      function getAgeBracket(age) {
+        if (age < 0.9) {
+          return "Puppy";
+        } else if (age <= 10) {
+          return "Adult";
+        } else if (age <= 15) {
+          return "Senior";
+        } else {
+          return "Geriatric";
+        }
+      }
+  
+      //for loop that will display the animals data in the table
+      for (let i = 0; i < animals.length; i++) {
+        const animal = animals[i];
+        tableHTML += `<tr><td>${animal.id}</td><td>${animal.name}</td><td>${animal.owner}</td><td>${animal.weight}</td><td>${animal.age}</td><td>${getAgeBracket(animal.age)}</td></tr>`;
+      }
+
       tableHTML += '</table>';
-      document.getElementById{'animal-table'}.innerHTML = tableHTML;
+      document.getElementById('animal-table').innerHTML = tableHTML;
     </script>
   </body>
 </html>
